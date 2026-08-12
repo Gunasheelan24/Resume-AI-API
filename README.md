@@ -96,3 +96,108 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+# Step One:
+show databases;
+create database learn_Sql;
+use learn_Sql;
+
+# basics table Query
+show tables;
+describe  user;
+
+# Query to Check the global time_zone
+SELECT @@global.time_zone;
+SELECT @@session.time_zone;
+
+# Query to set utc time zone
+SELECT CURRENT_TIMESTAMP;
+
+# setting up the timezone
+SET global time_zone = '+00:00';
+
+# Create Table Query
+create table user (
+    id int primary key auto_increment,
+    full_name varchar(100) not null,
+    email varchar(255) not null unique,
+    password varchar(255) not null,
+    status tinyint default 1,
+    created_at timestamp default current_timestamp,
+    modified_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+# Insert Data Query
+insert into user (email, password, full_name)
+values ("arullchlevna@gmail.com", "Welcome@24", "ArullChelvan"),
+       ("reshma@gmail.com", "Welcome@24", "Reshma");
+
+# Retrieve Data Query
+Select *
+From user;
+
+# Retrieve Data With Limit Query
+Select * from user limit 1;
+
+# Retrieve Data With Limit & Offset Query
+Select * from user limit 1 offset 1;
+
+# Retrieve Data With Sort By id Query
+Select * from user order by id desc;
+
+# Retrieve Data With Sort By id with limit Query
+Select * from user order by id desc limit 1;
+
+# Retrieve Data using the email
+Select * From user
+where email = "gunasheelan16@gmail.com";
+
+# Retrieve Data using the email by matching
+Select * From user
+where email like "%gunasheelan16%";
+
+# Retrieve Data greater than 1 by id
+Select * From user
+where id > 1;
+
+# Retrieve Data greater than or equal to 1 by id
+Select * From user
+where id >= 1;
+
+# Retrieve Data less than 3 by id
+Select * From user
+where id <= 3;
+
+# Retrieve the data except the one mentioned
+Select * From user
+where id != 1;
+
+# Retrieve Data but the both condition should need to be valid
+Select * From user
+where email = "gunasheelan16@gmail.com" and id = 1;
+
+# Retrieve Data if a single column matches
+Select * From user
+where email = "gunasheelan116@gmail.com" or id = 1;
+
+# Retrieve Data for multiple email address
+Select * From user
+where email in ("gunasheelan16@gmail.com", "reshma@gmail.com");
+
+# Retrieve the data between the range
+Select * From user
+where id between 1 and 3;
+
+# Retrieve particular column
+Select full_name, email
+from user;
+
+# Retrieve particular column with alias
+Select full_name as customerName, email as customerEmail
+from user;
+
+# Update Data Query
+Update user
+set full_name = "Reshma A"
+where id = 3;
+
