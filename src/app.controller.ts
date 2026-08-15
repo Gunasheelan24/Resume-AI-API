@@ -14,4 +14,14 @@ export class AppController {
   createFolder(@Body() dto: any) {
     return this.filesService.createFolder(dto.name);
   }
+
+  @Get()
+  getAllNotes() {
+    return this.notesService.getAllNotes();
+  }
+
+  @Get(':id')
+  getNoteById(@Param('id') id: string) {
+    return this.notesService.getNoteById(Number(id));
+  }
 }
